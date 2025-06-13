@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class QuotientRemainder {
+public class QuotientRemainder{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
@@ -14,4 +14,4 @@ public class QuotientRemainder {
         
         System.out.println("The Quotient is " + quotient + " and Remainder is " + remainder + " of two numbers " + number1 + " and " + number2);
     }
-}
+} 
