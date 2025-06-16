@@ -14,9 +14,6 @@ public class BonusCalculator {
         } else {
             System.out.println("No bonus awarded.");
         }
-        
     }
-
-
 }
 

@@ -33,4 +33,3 @@ public class YoungestTallestProblem {
             System.out.println("Anthony is the tallest.");
     }
 }
-24 
