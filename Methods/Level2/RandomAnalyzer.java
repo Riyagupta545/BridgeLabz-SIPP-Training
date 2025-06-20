@@ -30,4 +30,4 @@ public class RandomAnalyzer {
         double[] results = findAverageMinMax(randomNumbers);
         System.out.printf("Average: %.2f\nMin: %.0f\nMax: %.0f\n", results[0], results[1], results[2]);
     }
-}
+} 
