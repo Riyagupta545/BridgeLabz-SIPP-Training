@@ -1,0 +1,30 @@
+CLASS Customer
+    WORD name
+    WORD type   // "normal" OR "emergency"
+
+    CONSTRUCTOR Customer(name, type)
+        SET this.name = name
+        SET this.type = type
+
+
+CLASS CallCenter
+    QUEUE normalQueue
+    QUEUE emergencyQueue
+
+    CONSTRUCTOR CallCenter()
+        SET normalQueue = EMPTY QUEUE
+        SET emergencyQueue = EMPTY QUEUE
+
+    METHOD addCustomer(customer)
+        IF customer.type == "emergency" THEN
+            ENQUEUE emergencyQueue, customer
+        ELSE
+            ENQUEUE normalQueue, customer
+
+    METHOD serveCustomer()
+        IF emergencyQueue IS NOT EMPTY THEN
+            RETURN DEQUEUE emergencyQueue
+        ELSE IF normalQueue IS NOT EMPTY THEN
+            RETURN DEQUEUE normalQueue
+        ELSE
+            PRINT "No customers waiting"

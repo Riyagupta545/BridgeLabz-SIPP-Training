@@ -1,0 +1,19 @@
+CLASS QuizTimer
+    ARRAY timeSlots[SIZE]
+    INTEGER front
+    INTEGER rear
+    INTEGER size
+
+    CONSTRUCTOR QuizTimer(n)
+        SET timeSlots = ARRAY of size n
+        SET front = 0
+        SET rear = 0
+        SET size = n
+
+    METHOD addTimeSlot(time)
+        SET timeSlots[rear] = time
+        SET rear = (rear + 1) MOD size
+
+    METHOD triggerWarnings(currentIndex)
+        IF timeSlots[currentIndex] <= 5 THEN
+            PRINT "Warning: Only " + timeSlots[currentIndex] + " seconds left"

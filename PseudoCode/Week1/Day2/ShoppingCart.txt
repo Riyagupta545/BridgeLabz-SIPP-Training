@@ -1,0 +1,23 @@
+CLASS Item
+    WORD name
+    DOUBLE price
+
+    CONSTRUCTOR Item(name, price)
+        SET this.name = name
+        SET this.price = price
+
+
+CLASS ShoppingCart
+    LIST<Item> items
+
+    CONSTRUCTOR ShoppingCart()
+        SET items = EMPTY LIST
+
+    METHOD addItem(item)
+        ADD item INTO items
+
+    GENERIC METHOD calculateTotalPrice()
+        DOUBLE total = 0
+        FOR EACH item IN items
+            total = total + item.price
+        PRINT "Total Cart Price: " + total

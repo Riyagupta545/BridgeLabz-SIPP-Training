@@ -1,0 +1,26 @@
+CLASS Doctor
+    WORD name
+    WORD specialization
+
+    CONSTRUCTOR Doctor(name, specialization)
+        SET this.name = name
+        SET this.specialization = specialization
+
+
+CLASS Hospital
+    MAP<String, List<Doctor>> departmentMap
+
+    CONSTRUCTOR Hospital()
+        SET departmentMap = EMPTY MAP
+
+    METHOD addDoctor(department, doctor)
+        IF department NOT IN departmentMap THEN
+            departmentMap[department] = EMPTY LIST
+        ADD doctor INTO departmentMap[department]
+
+    METHOD filterBySpecialization(specialization)
+        FOR EACH dept IN departmentMap
+            CREATE filteredList = FILTER doctors WHERE doctor.specialization == specialization
+            PRINT "Department: " + dept
+            FOR EACH d IN filteredList
+                PRINT d.name

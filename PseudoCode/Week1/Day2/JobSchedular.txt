@@ -1,0 +1,25 @@
+CLASS Job
+    WORD name
+    INTEGER deadline
+    INTEGER processingTime
+
+    CONSTRUCTOR Job(name, deadline, processingTime)
+        SET this.name = name
+        SET this.deadline = deadline
+        SET this.processingTime = processingTime
+
+
+CLASS JobScheduler
+    PRIORITY_QUEUE<Job> jobQueue
+
+    CONSTRUCTOR JobScheduler()
+        SET jobQueue = EMPTY PRIORITY QUEUE
+        PRIORITY based on earliest deadline, then shortest processingTime
+
+    METHOD addJob(job)
+        INSERT job INTO jobQueue
+
+    METHOD scheduleJobs()
+        WHILE jobQueue IS NOT EMPTY
+            job = REMOVE job WITH HIGHEST PRIORITY
+            PRINT "Executing Job: " + job.name

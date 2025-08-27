@@ -1,0 +1,23 @@
+CLASS Employee
+    WORD name
+    WORD department
+
+    CONSTRUCTOR Employee(name, department)
+        SET this.name = name
+        SET this.department = department
+
+
+CLASS EmployeeRecord
+    LIST<Employee> employees
+
+    CONSTRUCTOR EmployeeRecord()
+        SET employees = EMPTY LIST
+
+    METHOD addEmployee(employee)
+        ADD employee INTO employees
+
+    METHOD filterByDepartment(dept)
+        CREATE newList = FILTER employees WHERE employee.department == dept USING STREAM
+        PRINT "Employees in Department " + dept + ":"
+        FOR EACH e IN newList
+            PRINT e.name

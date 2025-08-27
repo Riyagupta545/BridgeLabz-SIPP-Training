@@ -1,0 +1,39 @@
+CLASS SmartFarmingSystem
+
+    ABSTRACT CLASS Crop
+        METHOD waterRequirement() RETURNS INTEGER
+        METHOD harvest() RETURNS STRING
+    END CLASS
+
+    CLASS Rice EXTENDS Crop
+        METHOD waterRequirement() RETURNS INTEGER
+            RETURN 1500 
+        END METHOD
+
+        METHOD harvest() RETURNS STRING
+            RETURN "Rice harvested successfully."
+        END METHOD
+    END CLASS
+
+    CLASS Wheat EXTENDS Crop
+        METHOD waterRequirement() RETURNS INTEGER
+            RETURN 1200  
+        END METHOD
+
+        METHOD harvest() RETURNS STRING
+            RETURN "Wheat harvested successfully."
+        END METHOD
+    END CLASS
+
+    METHOD main()
+        DECLARE rice AS Crop = NEW Rice()
+        DECLARE wheat AS Crop = NEW Wheat()
+
+        PRINT "Rice Water Requirement: " + rice.waterRequirement() + " liters"
+        PRINT rice.harvest()
+
+        PRINT "Wheat Water Requirement: " + wheat.waterRequirement() + " liters"
+        PRINT wheat.harvest()
+    END METHOD
+
+END CLASS

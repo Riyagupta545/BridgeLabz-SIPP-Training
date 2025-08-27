@@ -1,0 +1,12 @@
+CLASS StudentScore
+    MAP<String, Integer> scores
+
+    CONSTRUCTOR StudentScore()
+        SET scores = EMPTY MAP
+
+    METHOD addScore(name, marks)
+        PUT (name, marks) INTO scores
+
+    METHOD displayHighestScorer()
+        FIND entry WITH MAX value IN scores USING STREAM
+        PRINT "Topper: " + entry.key + " Score: " + entry.value

@@ -1,0 +1,26 @@
+CLASS Member
+    WORD name
+    INTEGER id
+    DATE membershipDate
+    INTEGER validityPeriod   // in months or years
+
+    CONSTRUCTOR Member(name, id, membershipDate, validityPeriod)
+        SET this.name = name
+        SET this.id = id
+        SET this.membershipDate = membershipDate
+        SET this.validityPeriod = validityPeriod
+
+    METHOD displayInfo()
+        PRINT "Name: " + name
+        PRINT "ID: " + id
+        PRINT "Membership Date: " + membershipDate
+        PRINT "Validity Period: " + validityPeriod + " months"
+
+    METHOD checkMembershipValidity(currentDate)
+        CALCULATE expiryDate = membershipDate + validityPeriod
+        IF currentDate <= expiryDate THEN
+            PRINT "Membership is Valid"
+            RETURN TRUE
+        ELSE
+            PRINT "Membership Expired"
+            RETURN FALSE

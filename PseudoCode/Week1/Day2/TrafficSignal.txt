@@ -1,0 +1,62 @@
+ENUM TrafficLight
+    red
+    green
+    yellow
+END ENUM
+
+CLASS TrafficSignal
+    PRIVATE VARIABLE currentLight AS TrafficLight
+
+    CONSTRUCTOR TrafficSignal()
+        SET currentLight = TrafficLight.red
+
+    END CONSTRUCTOR
+
+    METHOD changeLight()
+        SWITCH currentLight
+            CASE red
+            :
+                SET currentLight = TrafficLight.green
+            CASE green:
+                SET currentLight = TrafficLight.yellow
+    w
+            CASE yellow
+w:
+                SET currentLight = TrafficLight.red
+
+        END SWITCH
+    END METHOD
+
+    METHOD getCurrentLight() RETURNS TrafficLight
+        RETURN currentLight
+    END METHOD
+
+    METHOD getLightDuration() RETURNS INTEGER
+        SWITCH currentLight
+            CASE red
+            :
+                RETURN 3000  // 3 seconds
+            CASE green:
+                RETURN 4000  // 4 seconds
+            CASE yellow
+w:
+                RETURN 1000  // 1 second
+            DEFAULT:
+                RETURN 2000
+        END SWITCH
+    END METHOD
+END CLASS
+
+CLASS JavaOppsEasy
+    METHOD main()
+        DECLARE signal AS TrafficSignal = NEW TrafficSignal()
+
+        FOR i FROM 1 TO 6
+            PRINT "Current Light: " + signal.getCurrentLight()
+            WAIT signal.getLightDuration() MILLISECONDS
+            CALL signal.changeLight()
+        END FOR
+
+        PRINT "Simulation ended."
+    END METHOD
+END CLASS

@@ -1,0 +1,30 @@
+ABSTRACT CLASS Crop
+    WORD name
+
+    CONSTRUCTOR Crop(name)
+        SET this.name = name
+
+    ABSTRACT METHOD waterRequirement()
+    ABSTRACT METHOD harvestTime()
+
+
+CLASS Rice EXTENDS Crop
+    CONSTRUCTOR Rice()
+        CALL super("Rice")
+
+    METHOD waterRequirement()
+        PRINT "Rice needs high water requirement"
+
+    METHOD harvestTime()
+        PRINT "Rice takes 120 days to harvest"
+
+
+CLASS Wheat EXTENDS Crop
+    CONSTRUCTOR Wheat()
+        CALL super("Wheat")
+
+    METHOD waterRequirement()
+        PRINT "Wheat needs moderate water requirement"
+
+    METHOD harvestTime()
+        PRINT "Wheat takes 90 days to harvest"

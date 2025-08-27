@@ -1,0 +1,20 @@
+CLASS TextEditor
+    STACK undoStack
+    WORD content
+
+    CONSTRUCTOR TextEditor()
+        SET undoStack = EMPTY STACK
+        SET content = ""
+
+    METHOD write(text)
+        PUSH content INTO undoStack
+        SET content = content + text
+
+    METHOD undo()
+        IF undoStack IS NOT EMPTY THEN
+            SET content = POP undoStack
+        ELSE
+            PRINT "Nothing to undo"
+
+    METHOD display()
+        PRINT "Current Content: " + content
